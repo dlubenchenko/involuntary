@@ -7,6 +7,7 @@
     <title>Refund application</title>
 </head>
 <body>
+    <h1>Повне повернення квитка (квиток не переоформлено)</h1>
     <form name="RA">
         <table>
             <tr>
@@ -23,18 +24,33 @@
                     </select>
                 </td>
                 <td>
-                    <input type="text" name="reasone">
+                    <input type="text" name="cancelledFlight" value="" onchange="sumAll()">
                 </td>
                 <td>
-                    <input type="text" name="cancelledFlight">
+                    <select name="reasone" onchange="sumAll()">
+                        <option value="cnx">cnx</option>
+                        <option value="skchg">skchg</option>
+                        <option value="skchg and lost mct">skchg and lost mct</option>
+                    </select>
                 </td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
+                <td>
+                    <input type="text" name="ticketNum" value="" onchange="sumAll()">
+                </td>
+                <td>
+                    <input type="text" name="DOI" value="" onchange="sumAll()">
+                </td>
+                <td>
+                    <select name="DOI" onchange="sumAll()">
+                        <option value="FP CASH">FP CASH</option>
+                        <option value="FP CC">FP CC</option>
+                        <option value="FP CC + CASH">FP CC + CASH</option>
+                    </select>
+                </td>
             </tr>
             <tr>
-                <td colspan="3">1</td>
-                <td colspan="3">1</td>
+                <td colspan="6">
+                    <input type="text" value="">
+                </td>
             </tr>
         </table>
     </form>
