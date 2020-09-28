@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../app/css/style.css">
-    <title>Refand application</title>
+    <script src="../app/js/main.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Refund application</title>
 </head>
 <body>
-    <div class="main">
-        <h1>У випадку повного повернення квитка (квиток не переоформлено)</h1>
-        <table class="maintr">
+    <form name="RA">
+        <table>
             <tr>
-                <td>Кількість квитків
-                    <select id="select_1">
+                <td>
+                    <select name="ticketsNum">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -22,30 +22,21 @@
                         <option value="8">8</option>
                     </select>
                 </td>
-                <td>причина
-                    <input type="text">
+                <td>
+                    <input type="text" name="reasone">
                 </td>
-                <td>рейс
-                    <input type="text">
+                <td>
+                    <input type="text" name="cancelledFlight">
                 </td>
-                <td>квиток
-                    <input type="text">
-                </td>
-                <td>DOI
-                    <input type="text">
-                </td>
-                <td>форма оплати
-                    <select id="select_2">
-                        <option selected="selected" disabled="disabled">Выбор:</option>
-                        <option id="1" value="FP CASH">FP CASH</option>
-                        <option id="2" value="FP CC">FP CC</option>
-                        <option id="3" value="FP CC + CASH">FP CC + CASH</option>
-                    </select>
-                </td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td colspan="3">1</td>
+                <td colspan="3">1</td>
             </tr>
         </table>
-    </div>
-
-    <script src="../app/js/main.js"></script>
+    </form>
 </body>
 </html>

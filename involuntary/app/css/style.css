@@ -1,16 +1,10 @@
-body{
-
+body {
+    background-color: rgb(87, 87, 255);
 }
-h1 {
-    text-align: center;
-}
-.maintr {
-    border-spacing: 5px;
+table, th, td {
+    border: 1px solid black;
     border-collapse: collapse;
-    text-align: center;
-    width: 100%;
 }
-
-table, tr, td {
-    border: 0px solid black;
+table {
+    width: 100%;
 }
