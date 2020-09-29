@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <script src="../involuntary/js/main.js"></script>
     <link rel="stylesheet" href="../involuntary/css/style.css">
     <title>Refund application</title>
 </head>
+
 <body>
     <h1>Повне повернення квитка (квиток не переоформлено)</h1>
     <form name="RAfull">
         <table>
             <tr>
-                <td>
+                <td>К-сть квитків
                     <select name="ticketsNum">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -24,9 +26,10 @@
                     </select>
                 </td>
                 <td>
-                    <input type="text" name="cancelledFlight" value="" onchange="sumAll()">
+                    <input type="text" placeholder="Відмінений рейс" name="cancelledFlight" value=""
+                        onchange="sumAll()">
                 </td>
-                <td>
+                <td>Причина
                     <select name="reasone" onchange="sumAll()">
                         <option value="cnx">cnx</option>
                         <option value="skchg">skchg</option>
@@ -34,13 +37,13 @@
                     </select>
                 </td>
                 <td>
-                    <input type="text" name="ticketNum" value="" onchange="sumAll()">
+                    <input type="text" placeholder="Номер квитка" name="ticketNum" value="016-3879287496" onchange="sumAll()">
                 </td>
                 <td>
-                    <input type="text" name="DOI" value="" onchange="sumAll()">
+                    <input type="text" placeholder="DOI" name="DOI" value="" onchange="sumAll()">
                 </td>
-                <td>
-                    <select name="DOI" onchange="sumAll()">
+                <td>Форма оплати
+                    <select name="FP" onchange="sumAll()">
                         <option value="FP CASH">FP CASH</option>
                         <option value="FP CC">FP CC</option>
                         <option value="FP CC + CASH">FP CC + CASH</option>
@@ -55,11 +58,11 @@
         </table>
     </form>
     <h1>Квиток переоформлено без доплати</h1>
-    <form name="">
+    <form name="RAreissued">
         <table>
             <tr>
-                <td>
-                    <select name="">
+                <td>К-сть квитків
+                    <select name="ticketsNum">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -71,23 +74,29 @@
                     </select>
                 </td>
                 <td>
-                    <input type="text" name="" value="" onchange="">
+                    <input type="text" placeholder="Відмінений рейс" name="cancelledFlight" value="" onchange="">
                 </td>
-                <td>
-                    <select name="" onchange="">
+                <td>Причина
+                    <select name="reasone" onchange="">
                         <option value="cnx">cnx</option>
                         <option value="skchg">skchg</option>
                         <option value="skchg and lost mct">skchg and lost mct</option>
                     </select>
                 </td>
                 <td>
-                    <input type="text" name="" value="" onchange="">
+                    <input type="text" placeholder="Номер квитка" name="ticketNum" value="" onchange="">
                 </td>
                 <td>
-                    <input type="text" name="" value="" onchange="">
+                    <input type="text" placeholder="DOI" name="DOI" value="" onchange="">
                 </td>
                 <td>
-                    <select name="" onchange="">
+                    <input type="text" placeholder="Номер нового квитка" name="newticketNum" value="" onchange="">
+                </td>
+                <td>
+                    <input type="text" placeholder="DOI нового квитка" name="DOI" value="" onchange="">
+                </td>
+                <td>Форма оплати
+                    <select name="FP" onchange="">
                         <option value="FP CASH">FP CASH</option>
                         <option value="FP CC">FP CC</option>
                         <option value="FP CC + CASH">FP CC + CASH</option>
@@ -95,13 +104,13 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="6">
-                    <input type="text" value="">
+                <td colspan="8">
+                    <input type="text" class="fullvalue" value="">
                 </td>
             </tr>
         </table>
     </form>
-    <h1>Квиток переоформлено без доплати<br>(квитки які виписані в Altea, Farelogix)</h1>
+    <!-- <h1>Квиток переоформлено без доплати<br>(квитки які виписані в Altea, Farelogix)</h1>
     <form name="">
         <table>
             <tr>
@@ -335,6 +344,7 @@
                 </td>
             </tr>
         </table>
-    </form>
+    </form> -->
 </body>
+
 </html>
