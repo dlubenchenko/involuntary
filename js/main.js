@@ -1,9 +1,10 @@
 const involDt = 'invol refund due to '
 const doi = 'DOI - '
 const tkt = 'TKT - '
+
 function sumAll() {
     let allInfo = ['']
-    const formValue = 7
+    const formValue = document.RAfull.length
     allInfo.shift()
     for (let i = 0; i < formValue; i++) {
         allInfo[i] = document.RAfull[i].value
@@ -12,8 +13,17 @@ function sumAll() {
     }
 }
 
+
 function RAreissue() {
-    let reissued = ['']
-    reissued[0] = document.RAreissued[8].value
-    console.log(reissued)
+    let el = document.RAreissued[8].value
+    // numEl изначально строка, чтобы числа не складывались друг с другом, а приписывались
+    let numEl = ''
+    // Перебираем каждый символ. Если символ можно распарсить как номер, приписываем к строке
+    for (let index in el) {
+        if (parseInt(el[index]) === Number.parseInt(el[index])) {
+            numEl += el[index]
+            console.log(true)
+        }
+    }
+    return console.log(parseInt(numEl)); // 5356
 }
