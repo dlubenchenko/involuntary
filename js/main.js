@@ -14,16 +14,9 @@ function sumAll() {
 }
 
 
-function RAreissue() {
-    let el = document.RAreissued[8].value
-    // numEl изначально строка, чтобы числа не складывались друг с другом, а приписывались
-    let numEl = ''
-    // Перебираем каждый символ. Если символ можно распарсить как номер, приписываем к строке
-    for (let index in el) {
-        if (parseInt(el[index]) === Number.parseInt(el[index])) {
-            numEl += el[index]
-            console.log(true)
-        }
-    }
-    return console.log(parseInt(numEl)); // 5356
-}
+
+let str = 'TAX    158280YQ TAX      7914YR TAX      4456UJ TAX      4922DE TAX     21132RA TAX     96636GB TAX      8709UB';
+let regexp = /..........[a-zA-Z][a-zA-Z]/gi;
+let matches_array = str.match(regexp);
+
+console.log(matches_array);
