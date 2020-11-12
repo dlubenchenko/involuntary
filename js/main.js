@@ -15,8 +15,47 @@ function sumAll() {
 
 
 
-let str = 'TAX    158280YQ TAX      7914YR TAX      4456UJ TAX      4922DE TAX     21132RA TAX     96636GB TAX      8709UB';
-let regexp = /..........[a-zA-Z][a-zA-Z]/gi;
-let matches_array = str.match(regexp);
+const findTaxes = 'TAX    158280YQ TAX      7914YR TAX      4456YQ TAX      4922DE TAX     21132RA TAX     96636RA TAX      8709RA';
 
-console.log(matches_array);
+// выделение такс
+const taxes = findTaxes.split(' ').filter((el) => {
+    return el != 'TAX' && el != ''
+  })
+// console.log(taxes)
+
+// разделение такс
+let taxNum = []
+let taxSymbol = []
+taxes.forEach(el => {
+    return taxNum.push(Number(el.slice(0,-2))) && taxSymbol.push(el.slice(-2))
+});
+// console.log(taxNum)
+// console.log(taxSymbol)
+
+// поиск похожых
+let i = 0
+let j = 1
+while (i < taxSymbol.length) {
+    while (j <= taxSymbol.length) {
+        if (taxSymbol[i] === taxSymbol[j]) {
+            taxNum[i] += taxNum[j]
+            taxNum[j] = ''
+            taxSymbol[j] = ''            
+        }
+        j++
+    }
+    i++
+    j = i + 1
+}
+
+// фильтр такс
+taxSymbol = taxSymbol.filter((el) => {
+    return el != ''
+  })
+taxNum = taxNum.filter((el) => {
+    return el != ''
+  })
+
+console.log(taxNum)
+console.log(taxSymbol)
+
