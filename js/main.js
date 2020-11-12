@@ -110,26 +110,10 @@ console.log('Всі використані такси', '\n', taxNumFqq)
 console.log(taxSymbolFqq)
 
 
+
+
+
+
 // поиск такс к возврату
 
-
-
-// поиск похожых для возврата
-let taxNumRef = []
-let taxSymbolRef = []
-
-i = 0
-j = 0
-while (i < taxSymbol.length) {
-    while (j < taxSymbolFqq.length) {
-        if (taxSymbol[i] === taxSymbolFqq[j]) {
-            taxNumRef.unshift(taxNum[i] - taxNumFqq[j])
-            taxSymbolRef.unshift(taxSymbol[i])
-        }
-        j++
-    }
-    i++
-    j = 0
-}
-console.log('Такси до повернення', '\n', taxNumRef)
-console.log(taxSymbolRef)
+const totatTax = {}
