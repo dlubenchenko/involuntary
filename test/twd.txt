@@ -20,7 +20,10 @@ SAC-MULTI/USE TWH
 
 
 TOTALTAX   EUR    282.47                                                        
-TX01 EUR    198.52YR  TX02 EUR      4.68FR  TX03 EUR     19.64QX          TX04 EUR      3.00M6  TX05 EUR     20.00TR  TX06 EUR      3.33XA          TX07 EUR      5.88XY  TX08 EUR      4.95YC  TX09 EUR      4.70AY          TX10 EUR      7.06CJ  TX11 EUR      6.93RN  TX12 EUR      3.78XF
+TX01 EUR    198.52YR  TX02 EUR      4.68FR  TX03 EUR     19.64QX          
+TX04 EUR      3.00M6  TX05 EUR     20.00TR  TX06 EUR      3.33XA          
+TX07 EUR      5.88XY  TX08 EUR      4.95YC  TX09 EUR      4.70AY          
+TX10 EUR      7.06CJ  TX11 EUR      6.93RN  TX12 EUR      3.78XF
 
 
 LAST TKT DTE 01SEP20 - DATE OF ORIGIN
@@ -41,4 +44,16 @@ BAG/SEAT/SERVICES AT A CHARGE MAY BE AVAILABLE-ENTER FXK
 PRICING OVERRIDE USED *V*
 CAT35 NEGOTIATED FARES
 
-FWT                                                                        TAX  /CNTRY:         TOTAL                                                    TAX BREAKDOWN                      POS     /       LOC                YQI        :         23.52 EUR                                                KL*SGT 1-2       SEQ 9961022     11.76 EUR /     14.00 USD                KL*SGT 3-4       SEQ 9961022     11.76 EUR /     14.00 USD            YRI        :        100.73 EUR                                                KL*SGT 2         SEQ 2044915    100.73 EUR /    120.00 USD            YRI        :         97.79 EUR                                                KL*SGT 3         SEQ 2044863     97.79 EUR /    116.50 USD           TOTAL AMOUNT:        222.04 EUR
+FWT                                                                        
+TAX  /CNTRY:         TOTAL                                                    
+TAX BREAKDOWN                      POS     /       LOC                
+YQI        :         23.52 EUR                                                
+KL*SGT 1-2       SEQ 9961022     11.76 EUR /     14.00 USD                
+KL*SGT 3-4       SEQ 9961022     11.76 EUR /     14.00 USD            
+YRI        :        100.73 EUR                                                
+KL*SGT 2         SEQ 2044915    100.73 EUR /    120.00 USD            
+YRI        :         97.79 EUR                                                
+KL*SGT 3         SEQ 2044863     97.79 EUR /    116.50 USD           
+TOTAL AMOUNT:        222.04 EUR
+
+EUR    11.76-YQ   XT EUR 4.68-FR EUR 19.64-QX EUR 3.00-M6 EUR   100.73-YR   EUR 20.00-TR EUR 3.33-XA EUR 5.88-XY EUR EUR    61.48-XT   4.95-YC
