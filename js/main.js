@@ -103,7 +103,7 @@ function partial() {
     console.log('result', result)
 
 for (let i = 0; i < result.length; i++) {
-    document.partialRef[i + 15].value = result[i].value + ' ' + result[i].name
+    document.partialRef[i + 17].value = result[i].value + ' ' + result[i].name
 }
 
 const bsr = +document.partialRef[9].value
@@ -119,6 +119,6 @@ var sum = result.reduce((acc, tax) => {
     return acc + tax.value
 }, 0)
 
-document.partialRef[14].value = +sum + +fareRef
+document.partialRef[14].value = +sum + +fareRef + +document.partialRef[15].value + +document.partialRef[16].value
 
 }
