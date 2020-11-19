@@ -109,8 +109,9 @@ for (let i = 0; i < result.length; i++) {
 const bsr = +document.partialRef[9].value
 const roe = +document.partialRef[10].value
 const nuc = +document.partialRef[11].value
+const fare = +document.partialRef[12].value
 
-const fareRef = document.partialRef[13].value = (nuc * roe * bsr).toFixed(2)
+const fareRef = document.partialRef[13].value = (fare - (nuc * roe * bsr)).toFixed(2)
 
 
 
