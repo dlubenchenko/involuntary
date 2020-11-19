@@ -36,8 +36,7 @@
                     </select>
                 </td>
                 <td>
-                    <input type="text" placeholder="Номер квитка" name="ticketNum" value="016-3879287496"
-                        onchange="sumAll()">
+                    <input type="text" placeholder="Номер квитка" name="ticketNum" value="016-3879287496" onchange="sumAll()">
                 </td>
                 <td>
                     <input type="text" placeholder="DOI" name="DOI" value="15SEP20" onchange="sumAll()">
@@ -57,7 +56,9 @@
             </tr>
         </table>
     </form>
-    <h1>Квиток переоформлено без доплати</h1>
+    <br>
+    <hr>
+    <!-- <h1>Квиток переоформлено без доплати</h1>
     <form name="RAreissued">
         <table>
             <tr>
@@ -105,11 +106,11 @@
             </tr>
             <tr>
                 <td colspan="8">
-                    <input type="text" class="fullvalue" value="" onchange="RAreissue()">
+                    <input type="text" class="fullvalue" value="" onchange="partial()">
                 </td>
             </tr>
         </table>
-    </form>
+    </form> -->
     <!-- <h1>Квиток переоформлено без доплати<br>(квитки які виписані в Altea, Farelogix)</h1>
     <form name="">
         <table>
@@ -203,9 +204,9 @@
                 </td>
             </tr>
         </table>
-    </form>
+    </form> -->
     <h1>При частково використаному квитку (квиток не переоформлено)</h1>
-    <form name="">
+    <form name="partialRef">
         <table>
             <tr>
                 <td>
@@ -245,13 +246,75 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="6">
-                    <input type="text" value="">
-                </td>
+                <tr>
+                    <td colspan="8">
+                        twd/tax<input id="taxCallculate1" type="text" value="TX01 EUR    198.52YR  TX02 EUR      4.68FR  TX03 EUR     19.64QX           TX04 EUR      3.00M6  TX05 EUR     20.00TR  TX06 EUR      3.33XA           TX07 EUR      5.88XY  TX08 EUR      4.95YC  TX09 EUR      4.70AY           TX10 EUR      7.06CJ  TX11 EUR      6.93RN  TX12 EUR      3.78XF">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        fqq<input id="taxCallculate2" type="text" value="EUR    11.76-YQ   XT EUR 4.68-FR EUR 19.64-QX EUR 3.00-M6 EUR   100.73-YR   EUR 20.00-TR EUR 3.33-XA EUR 5.88-XY EUR EUR    61.48-XT   4.95-YC">
+                        <input type="button" onclick="partial()" value="ТИЦЬ">
+                    </td>
+                    <tr>
+                        <td>
+                            BSR<input type="text" value="0.839365">
+                        </td>
+                        <td>
+                            ROE<input type="text" value="1">
+                        </td>
+                        <td>
+                            використано NUC<input type="text" value="83.40">
+                        </td>
+                        <td>
+                            тариф<input type="text" value="141.00">
+                        </td>
+                        <td>
+                            тариф до повернення<input type="text" value="">
+                        </td>
+                        <td>
+                            сумма до повернення<input type="text" value="">
+                        </td>
+                    </tr>
+                </tr>
+            </tr>
+        </table>
+        
+        <table>
+            <h1>Taxes to refnud</h1>
+            <tr>
+                <td>1<input type="text"></td>
+                <td>2<input type="text"></td>
+                <td>3<input type="text"></td>
+            </tr>
+            <tr>
+                <td>4<input type="text"></td>
+                <td>5<input type="text"></td>
+                <td>6<input type="text"></td>
+            </tr>
+            <tr>
+                <td>7<input type="text"></td>
+                <td>8<input type="text"></td>
+                <td>9<input type="text"></td>
+            </tr>
+            <tr>
+                <td>10<input type="text"></td>
+                <td>11<input type="text"></td>
+                <td>12<input type="text"></td>
+            </tr>
+            <tr>
+                <td>13<input type="text"></td>
+                <td>14<input type="text"></td>
+                <td>15<input type="text"></td>
+            </tr>
+            <tr>
+                <td>16<input type="text"></td>
+                <td>17<input type="text"></td>
+                <td>18<input type="text"></td>
             </tr>
         </table>
     </form>
-    <h1>При частково використаному квитку (квиток переоформлено з доплатою)</h1>
+    <!-- <h1>При частково використаному квитку (квиток переоформлено з доплатою)</h1>
     <form name="">
         <table>
             <tr>

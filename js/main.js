@@ -15,89 +15,109 @@ function sumAll() {
 
 
 
-let findTaxes = 'TX01 EUR    198.52YR  TX02 EUR      4.68FR  TX03 EUR     19.64QX           TX04 EUR      3.00M6  TX05 EUR     20.00TR  TX06 EUR      3.33XA           TX07 EUR      5.88XY  TX08 EUR      4.95YC  TX09 EUR      4.70AY           TX10 EUR      7.06CJ  TX11 EUR      6.93RN  TX12 EUR      3.78XF'.split(' ')
-const taxesFqq = 'EUR    11.76-YQ   XT EUR 4.68-FR EUR 19.64-QX EUR 3.00-QX EUR   100.73-YR   EUR 20.00-TR EUR 3.33-XA EUR 5.88-XY EUR EUR    61.48-XT   4.95-YC'.split(' ')
 
 
-//
-let allTaxes = findTaxes
-    .filter(tax => tax != '' && tax.indexOf('TX') && tax.indexOf(findTaxes[1]))
-    .map(tax => {
-        return {
-            name: tax.slice(-2),
-            value: Number(tax.slice(0, -2))
-        }
-    })
-// console.log(allTaxes)
 
-
-let filter = (taxValue) => {
-    i = 0
-    j = 1
-    while (i < taxValue.length) {
-        while (j < taxValue.length) {
-            if (taxValue[i].name === taxValue[j].name) {
-                taxValue[i].value += taxValue[j].value
-                taxValue[j].name = ''
-                taxValue[j].value = ''
+function partial() {
+    let findTaxes = document.getElementById("taxCallculate1").value.split(' ')
+    let taxesFqq = document.getElementById("taxCallculate2").value.split(' ')
+    
+    
+    // фільтр всіх такс
+    let allTaxes = findTaxes
+        .filter(tax => tax != '' && tax.indexOf('TX') && tax.indexOf(findTaxes[1]))
+        .map(tax => {
+            return {
+                name: tax.slice(-2),
+                value: Number(tax.slice(0, -2))
             }
-            j++
-        }
-        i++
-        j = i + 1
-    }
-}
-filter(allTaxes)
-// console.log(allTaxes)
-
-const filteredAllTaxes = allTaxes
-    .filter(tax => tax.name != '')
-    .map(tax => {
-        return {
-            name: tax.name,
-            value: Number(tax.value.toFixed(2))
-        }
-    })
-console.log('filteredAllTaxes', filteredAllTaxes)
-
-
-let allTaxesFqq = taxesFqq
-    .filter(tax => tax != '' && tax.indexOf(findTaxes[1]) && tax.indexOf('XT') && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR'))
-    .map(tax => {
-        return {
-            name: tax.slice(-2),
-            value: Number(tax.slice(0, -3))
-        }
-    })
-
-filter(allTaxesFqq)
-const filteredAllTaxesFqq = allTaxesFqq
-    .filter(tax => tax.name != '')
-console.log('filteredAllTaxesFqq', filteredAllTaxesFqq)
-
-
-
-
-
-let result = filteredAllTaxes
-    .map(tax => {
-        for (let i = 0; i < filteredAllTaxesFqq.length; i++) {
-            if (tax.name === filteredAllTaxesFqq[i].name) {
-                return {
-                    name: tax.name,
-                    value: tax.value - filteredAllTaxesFqq[i].value
+        })
+    // console.log(allTaxes)
+    
+    // фільтр FQQ такс
+    let allTaxesFqq = taxesFqq
+        .filter(tax => tax != '' && tax.indexOf(findTaxes[1]) && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR'))
+        .map(tax => {
+            return {
+                name: tax.slice(-2),
+                value: Number(tax.slice(0, -3))
+            }
+        })
+    // пошук одинакових
+    const filtertax = (taxValue) => {
+        i = 0
+        j = 1
+        while (i < taxValue.length) {
+            while (j < taxValue.length) {
+                if (taxValue[i].name === taxValue[j].name) {
+                    taxValue[i].value += taxValue[j].value
+                    taxValue[j].name = ''
+                    taxValue[j].value = ''
                 }
-            } 
+                j++
+            }
+            i++
+            j = i + 1
         }
-        return {
-            name: tax.name,
-            value: tax.value
-        }
-    })
-    .filter(tax => tax.value > 0)
+    }
+    // виклик фільтру
+    filtertax(allTaxesFqq)
+    filtertax(allTaxes)
+    
+    // видалення пустих значень всіх такс
+    const filteredAllTaxes = allTaxes
+        .filter(tax => tax.name != '')
+        .map(tax => {
+            return {
+                name: tax.name,
+                value: Number(tax.value.toFixed(2))
+            }
+        })
+    console.log('filteredAllTaxes', filteredAllTaxes)
+    
+    
+    // видалення пустих значень FQQ такс
+    const filteredAllTaxesFqq = allTaxesFqq
+        .filter(tax => tax.name != '')
+    console.log('filteredAllTaxesFqq', filteredAllTaxesFqq)
+    
+    
+    // всі такси - FQQ такси = такси до повернення
+    let result = filteredAllTaxes
+        .map(tax => {
+            for (let i = 0; i < filteredAllTaxesFqq.length; i++) {
+                if (tax.name === filteredAllTaxesFqq[i].name) {
+                    return {
+                        name: tax.name,
+                        value: tax.value - filteredAllTaxesFqq[i].value
+                    }
+                }
+            }
+            return {
+                name: tax.name,
+                value: tax.value
+            }
+        })
+        .filter(tax => tax.value > 0)
+    
+    console.log('result', result)
 
-console.log('result', result)
+for (let i = 0; i < result.length; i++) {
+    document.partialRef[i + 15].value = result[i].value + ' ' + result[i].name
+}
+
+const bsr = +document.partialRef[9].value
+const roe = +document.partialRef[10].value
+const nuc = +document.partialRef[11].value
+
+const fareRef = document.partialRef[13].value = (nuc * roe * bsr).toFixed(2)
 
 
 
+var sum = result.reduce((acc, tax) => {
+    return acc + tax.value
+}, 0)
 
+document.partialRef[14].value = sum
+
+}
