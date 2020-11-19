@@ -119,6 +119,6 @@ var sum = result.reduce((acc, tax) => {
     return acc + tax.value
 }, 0)
 
-document.partialRef[14].value = sum
+document.partialRef[14].value = +sum + +fareRef
 
 }
