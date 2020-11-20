@@ -1,16 +1,22 @@
-/* body {
+body {
+    
+}
 
-} */
-table, th, td {
-    border-collapse: collapse;
-    text-align: center;
-}
-table {
-    width: 100%;
-}
-input {
-    width: 80%;
-}
 h1 {
     text-align: center;
+}
+
+#itemsCheck, #ra, textarea {
+    width: 100%;
+    margin: 5px;
+}
+
+#reissue0, input, #reason, #fp {
+    display: none;
+    margin: 5px;
+    width: 15%;
+}
+
+.taxess {
+    display: none;
 }

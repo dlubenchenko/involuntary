@@ -1,414 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <title>Refund application</title>
 </head>
-
 <body>
-    <h1>Повне повернення квитка (квиток не переоформлено)</h1>
-    <form name="RAfull">
-        <table>
-            <tr>
-                <td>К-сть квитків
-                    <select name="ticketsNum">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" placeholder="Відмінений рейс" name="cancelledFlight" value="SK6016/27JUN"
-                        onchange="sumAll()">
-                </td>
-                <td>Причина
-                    <select name="reasone" onchange="sumAll()">
-                        <option value="cnx">cnx</option>
-                        <option value="skchg">skchg</option>
-                        <option value="skchg and lost mct">skchg and lost mct</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" placeholder="Номер квитка" name="ticketNum" value="016-3879287496" onchange="sumAll()">
-                </td>
-                <td>
-                    <input type="text" placeholder="DOI" name="DOI" value="15SEP20" onchange="sumAll()">
-                </td>
-                <td>Форма оплати
-                    <select name="FP" onchange="sumAll()">
-                        <option value="FP CASH">FP CASH</option>
-                        <option value="FP CC">FP CC</option>
-                        <option value="FP CC + CASH">FP CC + CASH</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <input type="text" value="">
-                </td>
-            </tr>
-        </table>
+    <form name="itemsCheck" id="itemsCheck">
+    <select name="Refund application" id="ra" onchange="findOption()">
+        <option class="item0" disabled selected value="">Chose your option</option>
+        <option class="item1" value="Full refund">Full refund</option>
+        <option class="item2" value="Full refund reissued involuntary">Full refund reissued involuntary</option>
+        <option class="item3" value="Full refund reissued involuntary Altea, Farelogix">Full refund reissued involuntary Altea, Farelogix</option>
+        <option class="item4" value="Full refund reissued voluntary">Full refund reissued voluntary</option>
+        <option class="item5" value="Partly used refund">Partly used refund</option>
+        <option class="item6" value="Partly used refund reissued voluntary">Partly used refund reissued voluntary</option>
+        <option class="item7" value="Partly used refund reissued involuntary">Partly used refund reissued involuntary</option>
+    </select>
     </form>
-    <br>
-    <hr>
-    <!-- <h1>Квиток переоформлено без доплати</h1>
-    <form name="RAreissued">
-        <table>
-            <tr>
-                <td>К-сть квитків
-                    <select name="ticketsNum">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" placeholder="Відмінений рейс" name="cancelledFlight" value="" onchange="">
-                </td>
-                <td>Причина
-                    <select name="reasone" onchange="">
-                        <option value="cnx">cnx</option>
-                        <option value="skchg">skchg</option>
-                        <option value="skchg and lost mct">skchg and lost mct</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" placeholder="Номер квитка" name="ticketNum" value="" onchange="">
-                </td>
-                <td>
-                    <input type="text" placeholder="DOI" name="DOI" value="" onchange="">
-                </td>
-                <td>
-                    <input type="text" placeholder="Номер нового квитка" name="newticketNum" value="" onchange="">
-                </td>
-                <td>
-                    <input type="text" placeholder="DOI нового квитка" name="DOI" value="" onchange="">
-                </td>
-                <td>Форма оплати
-                    <select name="FP" onchange="">
-                        <option value="FP CASH">FP CASH</option>
-                        <option value="FP CC">FP CC</option>
-                        <option value="FP CC + CASH">FP CC + CASH</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="8">
-                    <input type="text" class="fullvalue" value="" onchange="partial()">
-                </td>
-            </tr>
-        </table>
-    </form> -->
-    <!-- <h1>Квиток переоформлено без доплати<br>(квитки які виписані в Altea, Farelogix)</h1>
-    <form name="">
-        <table>
-            <tr>
-                <td>
-                    <select name="">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <select name="" onchange="">
-                        <option value="cnx">cnx</option>
-                        <option value="skchg">skchg</option>
-                        <option value="skchg and lost mct">skchg and lost mct</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <select name="" onchange="">
-                        <option value="FP CASH">FP CASH</option>
-                        <option value="FP CC">FP CC</option>
-                        <option value="FP CC + CASH">FP CC + CASH</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <input type="text" value="">
-                </td>
-            </tr>
-        </table>
-    </form>
-    <h1>Квиток переоформлено з доплатою</h1>
-    <form name="">
-        <table>
-            <tr>
-                <td>
-                    <select name="">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <select name="" onchange="">
-                        <option value="cnx">cnx</option>
-                        <option value="skchg">skchg</option>
-                        <option value="skchg and lost mct">skchg and lost mct</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <select name="" onchange="">
-                        <option value="FP CASH">FP CASH</option>
-                        <option value="FP CC">FP CC</option>
-                        <option value="FP CC + CASH">FP CC + CASH</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <input type="text" value="">
-                </td>
-            </tr>
-        </table>
-    </form> -->
-    <h1>При частково використаному квитку (квиток не переоформлено)</h1>
-    <form name="partialRef">
-        <table>
-            <tr>
-                <td>
-                    <select name="">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <select name="" onchange="">
-                        <option value="cnx">cnx</option>
-                        <option value="skchg">skchg</option>
-                        <option value="skchg and lost mct">skchg and lost mct</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <select name="" onchange="">
-                        <option value="FP CASH">FP CASH</option>
-                        <option value="FP CC">FP CC</option>
-                        <option value="FP CC + CASH">FP CC + CASH</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <tr>
-                    <td colspan="8">
-                        twd/tax<input id="taxCallculate1" type="text" value="">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="8">
-                        fqq<input id="taxCallculate2" type="text" value="">
-                        <input type="button" onclick="partial()" value="ТИЦЬ">
-                    </td>
-                    <tr>
-                        <td>
-                            BSR(заповнити)<input type="text" value="1">
-                        </td>
-                        <td>
-                            ROE(заповнити)<input type="text" value="1">
-                        </td>
-                        <td>
-                            використано NUC(заповнити)<input type="text" value="">
-                        </td>
-                        <td>
-                            тариф(заповнити)<input type="text" value="">
-                        </td>
-                        <td>
-                            тариф до повернення<input type="text" value="">
-                        </td>
-                        <td>
-                            сумма до повернення<input type="text" value="">
-                        </td>
-                    </tr>
-                </tr>
-            </tr>
-        </table>
-        
-        <table>
-            <h1>Taxes to refnud</h1>
-            <tr>
-                <td>YQ ввести вручну<input type="text"></td>
-                <td>YR ввести вручну<input type="text"></td>
-                <td>3<input type="text"></td>
-            </tr>
-            <tr>
-                <td>4<input type="text"></td>
-                <td>5<input type="text"></td>
-                <td>6<input type="text"></td>
-            </tr>
-            <tr>
-                <td>7<input type="text"></td>
-                <td>8<input type="text"></td>
-                <td>9<input type="text"></td>
-            </tr>
-            <tr>
-                <td>10<input type="text"></td>
-                <td>11<input type="text"></td>
-                <td>12<input type="text"></td>
-            </tr>
-            <tr>
-                <td>13<input type="text"></td>
-                <td>14<input type="text"></td>
-                <td>15<input type="text"></td>
-            </tr>
-            <tr>
-                <td>16<input type="text"></td>
-                <td>17<input type="text"></td>
-                <td>18<input type="text"></td>
-            </tr>
-        </table>
-    </form>
-    <!-- <h1>При частково використаному квитку (квиток переоформлено з доплатою)</h1>
-    <form name="">
-        <table>
-            <tr>
-                <td>
-                    <select name="">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <select name="" onchange="">
-                        <option value="cnx">cnx</option>
-                        <option value="skchg">skchg</option>
-                        <option value="skchg and lost mct">skchg and lost mct</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <select name="" onchange="">
-                        <option value="FP CASH">FP CASH</option>
-                        <option value="FP CC">FP CC</option>
-                        <option value="FP CC + CASH">FP CC + CASH</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <input type="text" value="">
-                </td>
-            </tr>
-        </table>
-    </form>
-    <h1>При частково використаному квитку (квиток переоформлено без доплати</h1>
-    <form name="">
-        <table>
-            <tr>
-                <td>
-                    <select name="">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <select name="" onchange="">
-                        <option value="cnx">cnx</option>
-                        <option value="skchg">skchg</option>
-                        <option value="skchg and lost mct">skchg and lost mct</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <input type="text" name="" value="" onchange="">
-                </td>
-                <td>
-                    <select name="" onchange="">
-                        <option value="FP CASH">FP CASH</option>
-                        <option value="FP CC">FP CC</option>
-                        <option value="FP CC + CASH">FP CC + CASH</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <input type="text" value="">
-                </td>
-            </tr>
-        </table>
-    </form> -->
-    <script src="js/main.js"></script>
-</body>
 
+
+    <form name="raValues">
+        
+        <input type="number" placeholder="к-сть EMD" min="0" max="9" size="8" onchange="sumAll()"> <!-- 0 -->
+
+        <input type="number" placeholder="к-сть квитків" min="1" max="9" onchange="sumAll()"> <!-- 1 -->
+
+        <div id="block">
+            <input type="text" placeholder="FLT/DATE" onchange="sumAll()"> <!-- 2 -->
+
+            <select name="" id="reason" onchange="sumAll()"> <!-- 3 -->
+                <option disabled selected value="">REASON</option>
+                <option value="CNX">CNX</option>
+                <option value="SKCHG">SKCHG</option>
+                <option value="SKCHG AND LOST MCT">SKCHG AND LOST MCT</option>
+            </select>
+
+            <input type="text" placeholder="номер орг квитка" onchange="sumAll()"> <!-- 4 -->
+
+            <input type="text" placeholder="дата виписки орг квитка" onchange="sumAll()"> <!-- 5 -->
+
+            <input type="text" placeholder="номер нового квитка" onchange="sumAll()"> <!-- 6 -->
+
+            <input type="text" placeholder="дата виписки нвг квитка" onchange="sumAll()"> <!-- 7 -->
+
+            <input type="text" placeholder="купони до повернення" onchange="sumAll()"> <!-- 8 -->
+
+            <div id="reissue0"> <!-- 9 -->
+                <label for="reissue">REISSUE-0</label>
+                <input type="checkbox" name="REISSUE-0" id="reissue">
+            </div>
+
+            <input type="text" placeholder="FARE PAID" onchange="sumAll()"> <!-- 10 -->
+
+            <input type="text" placeholder="FARE PAID + ADD PAID" onchange="sumAll()"> <!-- 11 -->
+
+            <input type="text" placeholder="TKT PRICE" onchange="sumAll()"> <!-- 12 -->
+
+            <input type="text" placeholder="FARE USED" onclick="partial()""> <!-- 13 -->
+            <input type="text" placeholder="ROE" onchange="sumAll()"> <!-- 14 -->
+            <input type="text" placeholder="BSR" onchange="sumAll()"> <!-- 15 -->
+            <input type="text" placeholder="NUC USED" onchange="sumAll()"> <!-- 16 -->
+
+            <input type="text" placeholder="TAX TO REF" onchange="sumAll()"> <!-- 17 -->
+
+            <select name="" id="fp" onchange="sumAll()"> <!-- 18 -->
+                <option disabled selected value="">FORM OF PAYMENT</option>
+                <option value="FP CASH">FP CASH</option>
+                <option value="FP CC">FP CC</option>
+                <option value="FP CC + CASH">FP CC + CASH</option>
+            </select> 
+            <input type="text" placeholder="FP CC"> <!-- 19 -->
+            <input type="text" placeholder="FP CASH"> <!-- 20 -->
+            <br>
+            <input type="text" placeholder="TAX FROM TWD"> <!-- 21 -->
+            <input type="text" placeholder="TAX FROM FQQ"> <!-- 22 -->
+            <input type="text" placeholder="BSR заповнити"> <!-- 23 -->
+            <input type="text" placeholder="ROE заповнити"> <!-- 24 -->
+            <input type="text" placeholder="використано NUC заповнити"> <!-- 25 -->
+            <input type="text" placeholder="тариф еквівалент заповнити"> <!-- 26 -->
+            <input type="text" placeholder="YQ вручну"> <!-- 27 -->
+            <input type="text" placeholder="YR вручну"> <!-- 28 -->
+
+        </div>
+
+
+
+        <textarea name="" class="itemsCheck"></textarea> <!-- 29 -->
+
+        <input type="button" onclick="partial()" value="ТИЦЬ"> <!-- 30 -->
+
+
+        <input type="text" class="taxess"> <!-- 31 -->
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess">
+        <input type="text" class="taxess"> <!-- 53 -->
+        <input type="text" class="taxess"> <!-- 54 -->
+        <input type="text" class="taxess"> <!-- 55 -->
+        <input type="text" class="taxess"> <!-- 56 -->
+
+    </form>
+
+
+
+    <script src="js/main.js"></script>
+    <script src="js/style.js"></script>
+</body>
 </html>
