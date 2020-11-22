@@ -17,6 +17,6 @@ h1 {
     width: 15%;
 }
 
-.taxess {
+.taxess, textarea {
     display: none;
 }

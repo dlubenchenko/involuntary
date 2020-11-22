@@ -9,112 +9,119 @@
     <form name="itemsCheck" id="itemsCheck">
     <select name="Refund application" id="ra" onchange="findOption()">
         <option class="item0" disabled selected value="">Chose your option</option>
-        <option class="item1" value="Full refund">Full refund</option>
-        <option class="item2" value="Full refund reissued involuntary">Full refund reissued involuntary</option>
-        <option class="item3" value="Full refund reissued involuntary Altea, Farelogix">Full refund reissued involuntary Altea, Farelogix</option>
-        <option class="item4" value="Full refund reissued voluntary">Full refund reissued voluntary</option>
-        <option class="item5" value="Partly used refund">Partly used refund</option>
-        <option class="item6" value="Partly used refund reissued voluntary">Partly used refund reissued voluntary</option>
-        <option class="item7" value="Partly used refund reissued involuntary">Partly used refund reissued involuntary</option>
+        <option class="refund1" value="refund1">Full refund</option>
+        <option class="refund2" value="refund2">Full refund reissued involuntary</option>
+        <option class="refund3" value="refund3">Full refund reissued involuntary Altea, Farelogix</option>
+        <option class="refund4" value="refund4">Full refund reissued voluntary</option>
+        <option class="refund5" value="refund5">Partly used refund</option>
+        <option class="refund6" value="refund6">Partly used refund reissued voluntary</option>
+        <option class="refund7" value="refund7">Partly used refund reissued involuntary</option>
     </select>
     </form>
 
 
     <form name="raValues">
         
-        <input type="number" placeholder="к-сть EMD" min="0" max="9" size="8" onchange="sumAll()"> <!-- 0 -->
+        <input type="number" placeholder="к-сть EMD" min="0" max="9" size="8"> <!-- 0 -->
 
-        <input type="number" placeholder="к-сть квитків" min="1" max="9" onchange="sumAll()"> <!-- 1 -->
+        <input type="number" placeholder="к-сть квитків" min="1" max="9"> <!-- 1 -->
 
         <div id="block">
-            <input type="text" placeholder="FLT/DATE" onchange="sumAll()"> <!-- 2 -->
+            <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" type="text" placeholder="FLT/DATE"> <!-- 2 -->
 
-            <select name="" id="reason" onchange="sumAll()"> <!-- 3 -->
+            <select class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" name="" id="reason"> <!-- 3 -->
                 <option disabled selected value="">REASON</option>
                 <option value="CNX">CNX</option>
                 <option value="SKCHG">SKCHG</option>
                 <option value="SKCHG AND LOST MCT">SKCHG AND LOST MCT</option>
             </select>
 
-            <input type="text" placeholder="номер орг квитка" onchange="sumAll()"> <!-- 4 -->
+            <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" type="text" placeholder="номер квитка"> <!-- 4 -->
 
-            <input type="text" placeholder="дата виписки орг квитка" onchange="sumAll()"> <!-- 5 -->
+            <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" type="text" placeholder="дата виписки квитка"> <!-- 5 -->
 
-            <input type="text" placeholder="номер нового квитка" onchange="sumAll()"> <!-- 6 -->
+            <input class="refund2 refund3 refund4 refund6 refund7" type="text" placeholder="номер нового квитка"> <!-- 6 -->
 
-            <input type="text" placeholder="дата виписки нвг квитка" onchange="sumAll()"> <!-- 7 -->
+            <input class="refund2 refund3 refund4 refund6 refund7" type="text" placeholder="дата виписки нвг квитка"> <!-- 7 -->
 
-            <input type="text" placeholder="купони до повернення" onchange="sumAll()"> <!-- 8 -->
+            <input class="refund5 refund6 refund7" type="text" placeholder="купони до повернення"> <!-- 8 -->
 
-            <div id="reissue0"> <!-- 9 -->
+            <div class="refund2 refund3 refund7" id="reissue0"> <!-- 9 -->
                 <label for="reissue">REISSUE-0</label>
                 <input type="checkbox" name="REISSUE-0" id="reissue">
             </div>
 
-            <input type="text" placeholder="FARE PAID" onchange="sumAll()"> <!-- 10 -->
+            <input class="refund3 refund7" type="text" placeholder="FARE PAID"> <!-- 10 -->
 
-            <input type="text" placeholder="FARE PAID + ADD PAID" onchange="sumAll()"> <!-- 11 -->
+            <input class="refund4 refund6" type="text" placeholder="FARE PAID + ADD PAID"> <!-- 11 -->
 
-            <input type="text" placeholder="TKT PRICE" onchange="sumAll()"> <!-- 12 -->
+            <input class="refund3" type="text" placeholder="TKT PRICE"> <!-- 12 -->
 
-            <input type="text" placeholder="FARE USED" onclick="partial()""> <!-- 13 -->
-            <input type="text" placeholder="ROE" onchange="sumAll()"> <!-- 14 -->
-            <input type="text" placeholder="BSR" onchange="sumAll()"> <!-- 15 -->
-            <input type="text" placeholder="NUC USED" onchange="sumAll()"> <!-- 16 -->
+            <input class="refund5 refund6 refund7" type="text" placeholder="FARE USED"> <!-- 13 -->
+            <input class="refund5" type="text" placeholder="TOT TO REF"> <!-- 14 -->
+            <input class="" type="text" placeholder="BSR"> <!-- 15 -->
+            <input class="" type="text" placeholder="NUC USED"> <!-- 16 -->
 
-            <input type="text" placeholder="TAX TO REF" onchange="sumAll()"> <!-- 17 -->
+            <input class="refund3 refund4 refund5 refund6 refund7" type="text" placeholder="TAX TO REF"> <!-- 17 -->
 
-            <select name="" id="fp" onchange="sumAll()"> <!-- 18 -->
+            <select class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" name="" id="fp" onchange="findFp()"> <!-- 18 -->
                 <option disabled selected value="">FORM OF PAYMENT</option>
                 <option value="FP CASH">FP CASH</option>
                 <option value="FP CC">FP CC</option>
-                <option value="FP CC + CASH">FP CC + CASH</option>
+                <option value="FP CC + FP CASH">FP CC + CASH</option>
             </select> 
-            <input type="text" placeholder="FP CC"> <!-- 19 -->
-            <input type="text" placeholder="FP CASH"> <!-- 20 -->
+            <input class="" type="text" placeholder="FP CC"> <!-- 19 -->
+            <input class="" type="text" placeholder="FP CASH"> <!-- 20 -->
             <br>
-            <input type="text" placeholder="TAX FROM TWD"> <!-- 21 -->
-            <input type="text" placeholder="TAX FROM FQQ"> <!-- 22 -->
-            <input type="text" placeholder="BSR заповнити"> <!-- 23 -->
-            <input type="text" placeholder="ROE заповнити"> <!-- 24 -->
-            <input type="text" placeholder="використано NUC заповнити"> <!-- 25 -->
-            <input type="text" placeholder="тариф еквівалент заповнити"> <!-- 26 -->
-            <input type="text" placeholder="YQ вручну"> <!-- 27 -->
-            <input type="text" placeholder="YR вручну"> <!-- 28 -->
+
+            <textarea class="refund5" placeholder="вставити TAX FROM TWD" rows="5"></textarea> <!-- 21 -->
+            <textarea class="refund5" placeholder="вставити TAX FROM FQQ" rows="5"></textarea> <!-- 22 -->
+            <input class="refund5" type="text" placeholder="BSR заповнити"> <!-- 23 -->
+            <input class="refund5" type="text" placeholder="ROE заповнити"> <!-- 24 -->
+            <input class="refund5" type="text" placeholder="використано NUC заповнити"> <!-- 25 -->
+            <input class="refund5" type="text" placeholder="тариф/еквівалент заповнити"> <!-- 26 -->
+            <input class="refund5" type="text" placeholder="YQ вручну"> <!-- 27 -->
+            <input class="refund5" type="text" placeholder="YR вручну"> <!-- 28 -->
 
         </div>
 
 
 
-        <textarea name="" class="itemsCheck"></textarea> <!-- 29 -->
+        <textarea class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" name="" class="itemsCheck"></textarea> <!-- 29 -->
 
-        <input type="button" onclick="partial()" value="ТИЦЬ"> <!-- 30 -->
+        <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" type="button" onclick="partial()" value="ТИЦЬ"> <!-- 30 -->
+        <br>
 
 
-        <input type="text" class="taxess"> <!-- 31 -->
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess">
-        <input type="text" class="taxess"> <!-- 53 -->
-        <input type="text" class="taxess"> <!-- 54 -->
+        <input type="text" class="taxess" onchange="taxes()"> <!-- 31 -->
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()">
+        <input type="text" class="taxess" onchange="taxes()"> <!-- 53 -->
+        <input type="text" class="taxess" onchange="taxes()"> <!-- 54 -->
         <input type="text" class="taxess"> <!-- 55 -->
         <input type="text" class="taxess"> <!-- 56 -->
 

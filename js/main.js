@@ -1,13 +1,14 @@
-const involDt = 'inv rf dt '.toUpperCase()
-const doi = 'DOI - '
-const tkt = 'TKT - '
-const newTkt = 'NEWTKT - '
-const newTktDoi = 'DOI - '
-const cpns = 'CPN TO REF - '
-const reissue = 'REISSUE-0'
-const farePaid = 'FARE PAID'
-const farePaidAdd = 'FARE PAID + ADD PAID'
-const tktPrice = 'TKT PRICE'
+const involDt = 'inv rf dt '.toUpperCase(),
+    doi = 'DOI - ',
+    tkt = 'TKT - ',
+    newTkt = 'NEWTKT - ',
+    newTktDoi = 'DOI - ',
+    cpns = 'CPN TO REF - ',
+    reissue = 'REISSUE-0',
+    farePaid = 'FARE PAID',
+    farePaidAdd = 'FARE PAID + ADD PAID',
+    tktPrice = 'TKT PRICE',
+    totRef = 'TOT TO REF'
 let fareUsed = 'FARE USED'
 const taxToRef = 'TAX TO REF'
 
@@ -19,8 +20,12 @@ const taxToRef = 'TAX TO REF'
 
 
 function partial() {
-    let findTaxes = document.raValues[21].value.split(' ')
-    let taxesFqq = document.raValues[22].value.split(' ')
+    const findTaxes = document.raValues[21].value.split(' ')
+    const taxesFqq = document.raValues[22].value.split(' ')
+    const bsr = +document.raValues[23].value,
+        roe = +document.raValues[24].value,
+        nuc = +document.raValues[25].value,
+        fare = +document.raValues[26].value
 
 
     // фільтр всіх такс
@@ -35,7 +40,7 @@ function partial() {
     // console.log(allTaxes)
 
     // фільтр FQQ такс
-    let allTaxesFqq = taxesFqq
+    const allTaxesFqq = taxesFqq
         .filter(tax => tax != '' && tax.indexOf(findTaxes[1]) && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR'))
         .map(tax => {
             return {
@@ -73,13 +78,13 @@ function partial() {
                 value: Number(tax.value.toFixed(2))
             }
         })
-    console.log('filteredAllTaxes', filteredAllTaxes)
+    // console.log('filteredAllTaxes', filteredAllTaxes)
 
 
     // видалення пустих значень FQQ такс
     const filteredAllTaxesFqq = allTaxesFqq
         .filter(tax => tax.name != '')
-    console.log('filteredAllTaxesFqq', filteredAllTaxesFqq)
+    // console.log('filteredAllTaxesFqq', filteredAllTaxesFqq)
 
 
     // всі такси - FQQ такси = такси до повернення
@@ -118,86 +123,98 @@ function partial() {
             }
         })
 
-    console.log('result', result)
+    // console.log('result', result)
 
 
-
+    // розстановка такс окремо
     for (let i = 0; i < result.length; i++) {
         document.getElementsByClassName('taxess')[i].style.display = 'inline'
         document.raValues[i + 31].value = result[i].value + ' ' + result[i].name
     }
 
-    result.forEach((el) => {
-        let temp = document.raValues[17].value += (el.value + ' ' + el.name + ' / ')
-        return temp
-    });
+    // такси окремо в строку
+    const taxRef = result.map((key) => {
+        return (key.value + key.name)
+    })
 
-    const bsr = +document.raValues[23].value
-    const roe = +document.raValues[24].value
-    const nuc = +document.raValues[25].value
-    const fare = +document.raValues[26].value
-    
-    const usedFare = document.raValues[13].value = (nuc * roe * bsr).toFixed(2)
-    const fareRef = fare - usedFare
-
-
-
-    let sum = document.raValues[56].value = result.reduce((acc, tax) => {
-        return (+acc + +tax.value).toFixed(2)
+    // сумма такс
+    const sumTax = document.raValues[17].value = result.map((key) => {
+        return key.value
+    }).reduce((acc, key) => {
+        return acc + key
     }, 0)
-
-    // document.partialRef[14].value = +sum + +fareRef + +document.partialRef[15].value + +document.partialRef[16].value
-
-}
+    // console.log(sumTax)
 
 
 
+    // використанний/до повернення тариф/такси / розрахунки
+    const usedFare = document.raValues[13].value = (nuc * roe * bsr).toFixed(2)
+    const fareRef = +fare - +usedFare
+    const totalToRef = document.raValues[14].value = +fareRef + +sumTax
+    // console.log(usedFare)
+    // console.log(fareRef)
+    // console.log(sumTax)
+    // console.log(totalToRef)
 
-function sumAll() {
-    if (document.itemsCheck.ra.value === 'Full refund') {
+
+
+
+    for (let i = 19; i < 21; i++) {
+        if (document.getElementById('fp').value === document.raValues[i].placeholder) {
+            document.raValues[i].value = totalToRef
+        } else if (document.getElementById('fp').value === 'FP CC + FP CASH') {
+            document.raValues[19].value = totalToRef - document.raValues[20].value
+        } else {
+            document.raValues[i].value = ''
+        }
+    }
+
+
+
+    // формування строки
+    if (document.itemsCheck.ra.value === 'refund1') {
         let allInfo = ['']
         for (let i = 2; i < 56; i++) {
             allInfo[i] = document.raValues[i].value
             document.raValues[29].value = `${involDt}${allInfo[2]} ${allInfo[3]} / ${tkt}${allInfo[4]} / ${doi}${allInfo[5]} / ${allInfo[18]}`
         }
     }
-    if (document.itemsCheck.ra.value === 'Full refund reissued involuntary') {
+    if (document.itemsCheck.ra.value === 'refund2') {
         let allInfo = ['']
         for (let i = 2; i < 56; i++) {
             allInfo[i] = document.raValues[i].value
             document.raValues[29].value = `${involDt}${allInfo[2]} ${allInfo[3]} / ${tkt}${allInfo[4]} / ${doi}${allInfo[5]} / ${newTkt}${allInfo[6]} / ${newTktDoi}${allInfo[7]} / ${allInfo[18]}`
         }
     }
-    if (document.itemsCheck.ra.value === 'Full refund reissued involuntary Altea, Farelogix') {
+    if (document.itemsCheck.ra.value === 'refund3') {
         let allInfo = ['']
         for (let i = 2; i < 56; i++) {
             allInfo[i] = document.raValues[i].value
             document.raValues[29].value = `${involDt}${allInfo[2]} ${allInfo[3]} / ${tkt}${allInfo[4]} / ${doi}${allInfo[5]} / ${farePaid} ${allInfo[10]} / ${taxToRef} ${allInfo[17]} / ${tktPrice} ${allInfo[12]} / ${tktPrice} ${allInfo[12]} / ${newTkt}${allInfo[6]} / ${newTktDoi}${allInfo[7]} / ${reissue} / ${allInfo[18]}`
         }
     }
-    if (document.itemsCheck.ra.value === 'Full refund reissued voluntary') {
+    if (document.itemsCheck.ra.value === 'refund4') {
         let allInfo = ['']
         for (let i = 2; i < 56; i++) {
             allInfo[i] = document.raValues[i].value
             document.raValues[29].value = `${involDt}${allInfo[2]} ${allInfo[3]} / ${tkt}${allInfo[4]} / ${doi}${allInfo[5]} / ${newTkt}${allInfo[6]} / ${newTktDoi}${allInfo[7]} / ${farePaidAdd} ${allInfo[11]} / ${taxToRef} ${allInfo[17]} / ${allInfo[18]}`
         }
-        console.log(allInfo)
     }
-    if (document.itemsCheck.ra.value === 'Partly used refund') {
+    if (document.itemsCheck.ra.value === 'refund5') {
         let allInfo = ['']
         for (let i = 2; i < 56; i++) {
             allInfo[i] = document.raValues[i].value
-            document.raValues[29].value = `${involDt}${allInfo[2]} ${allInfo[3]} / ${tkt}${allInfo[4]} / ${doi}${allInfo[5]} / ${cpns}${allInfo[8]} / ${fareUsed} ${allInfo[13]} / ${taxToRef} ${allInfo[17]} / ${allInfo[18]}`
+            document.raValues[29].value = `${involDt}${allInfo[2]} ${allInfo[3]} / ${tkt}${allInfo[4]} / ${doi}${allInfo[5]} / ${cpns}${allInfo[8]} / ${fareUsed} ${allInfo[13]} / ${taxToRef} - ${taxRef.join(' ')} / ${totRef} - ${allInfo[18]}`
         }
     }
-    if (document.itemsCheck.ra.value === 'Partly used refund reissued voluntary') {
+    if (document.itemsCheck.ra.value === 'refund6') {
         let allInfo = ['']
         for (let i = 2; i < 56; i++) {
             allInfo[i] = document.raValues[i].value
             document.raValues[29].value = `${involDt}${allInfo[2]} ${allInfo[3]} / ${tkt}${allInfo[4]} / ${doi}${allInfo[5]} / ${newTkt}${allInfo[6]} / ${newTktDoi}${allInfo[7]} / ${farePaidAdd} ${allInfo[13]} / ${cpns}${allInfo[8]} / ${fareUsed} ${allInfo[13]} / ${taxToRef} ${allInfo[17]} / ${allInfo[18]}`
         }
     }
-    if (document.itemsCheck.ra.value === 'Partly used refund reissued involuntary') {
+    if (document.itemsCheck.ra.value === 'refund7') {
         let allInfo = ['']
         for (let i = 2; i < 56; i++) {
             allInfo[i] = document.raValues[i].value
