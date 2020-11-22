@@ -142,15 +142,15 @@ function partial() {
         return key.value
     }).reduce((acc, key) => {
         return acc + key
-    }, 0)
+    }, 0).toFixed(2)
     // console.log(sumTax)
 
 
 
     // використанний/до повернення тариф/такси / розрахунки
     const usedFare = document.raValues[13].value = (nuc * roe * bsr).toFixed(2)
-    const fareRef = +fare - +usedFare
-    const totalToRef = document.raValues[14].value = +fareRef + +sumTax
+    const fareRef = +fare - (+usedFare).toFixed(2)
+    const totalToRef = document.raValues[14].value = (+fareRef + +sumTax).toFixed(2)
     // console.log(usedFare)
     // console.log(fareRef)
     // console.log(sumTax)
@@ -163,7 +163,7 @@ function partial() {
         if (document.getElementById('fp').value === document.raValues[i].placeholder) {
             document.raValues[i].value = totalToRef
         } else if (document.getElementById('fp').value === 'FP CC + FP CASH') {
-            document.raValues[19].value = totalToRef - document.raValues[20].value
+            document.raValues[19].value = (totalToRef - document.raValues[20].value)
         } else {
             document.raValues[i].value = ''
         }
