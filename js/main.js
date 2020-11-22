@@ -164,7 +164,7 @@ function partial() {
         if (document.getElementById('fp').value === document.raValues[i].placeholder) {
             document.raValues[i].value = totalToRef
         } else if (document.getElementById('fp').value === fpCahsCc) {
-            document.raValues[19].value = (totalToRef - document.raValues[20].value)
+            document.raValues[19].value = (totalToRef - document.raValues[20].value).toFixed(2)
         } else {
             document.raValues[i].value = ''
         }
