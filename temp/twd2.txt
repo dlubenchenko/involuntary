@@ -1,0 +1,32 @@
+ OD-RIXRIX  SI-      FCPI-1   POI-LWO  DOI-17JAN20  IOI-72323834
+   1.KVILUNA/ZANE              ADT            ST
+ 1 ORIX LH 893   L 07MAR0625 OK LEULGTP3      F   07MAR07MAR NO
+ 2 OFRA LH 890   T 24MAR1040 OK TEULGTP3      O   24MAR24MAR NO
+    RIX
+FARE   F EUR        69.00
+EQUIV    UAH         1851
+TOTALTAX UAH         2039
+TOTAL    UAH         3890 
+/FC RIX LH FRA32.11 LH RIX44.29 NUC76.40END ROE0.903053
+FE FARE RESTRICTION MAY APPLY
+FP CASH
+FOR TAX/FEE DETAILS USE TWD/TAX
+SAC- 2204AK2L820WJ
+>
+twd/tax
+TOTALTAX   UAH      2039                                                        
+TX01 UAH       242YQ  TX02 UAH       349YQ  TX03 UAH       267DE                
+TX04 UAH       198OY  TX05 UAH       714RA  TX06 UAH        94LV                
+TX07 UAH       175XM 
+
+
+
+
+26.8261
+
+
+
+
+UAH     1208-YQ   XT UAH 198-OY UAH 267-DE UAH 714-RA                           
+UAH      430-YR                                                                 
+UAH     1179-XT
