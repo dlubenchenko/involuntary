@@ -8,7 +8,8 @@ const involDt = 'inv rf dt '.toUpperCase(),
     farePaid = 'FARE PAID',
     farePaidAdd = 'FARE PAID + ADD PAID',
     tktPrice = 'TKT PRICE',
-    totRef = 'TOT TO REF'
+    totRef = 'TOT TO REF',
+    fpCahsCc = 'FP CC + FP CASH'
 let fareUsed = 'FARE USED'
 const taxToRef = 'TAX TO REF'
 
@@ -162,7 +163,7 @@ function partial() {
     for (let i = 19; i < 21; i++) {
         if (document.getElementById('fp').value === document.raValues[i].placeholder) {
             document.raValues[i].value = totalToRef
-        } else if (document.getElementById('fp').value === 'FP CC + FP CASH') {
+        } else if (document.getElementById('fp').value === fpCahsCc) {
             document.raValues[19].value = (totalToRef - document.raValues[20].value)
         } else {
             document.raValues[i].value = ''
@@ -204,8 +205,8 @@ function partial() {
         let allInfo = ['']
         for (let i = 2; i < 56; i++) {
             allInfo[i] = document.raValues[i].value
-            document.raValues[29].value = `${involDt}${allInfo[2]} ${allInfo[3]} / ${tkt}${allInfo[4]} / ${doi}${allInfo[5]} / ${cpns}${allInfo[8]} / ${fareUsed} ${allInfo[13]} / ${taxToRef} - ${taxRef.join(' ')} / ${totRef} - ${allInfo[18]}`
-        }
+            document.raValues[29].value = `${involDt}${allInfo[2]} ${allInfo[3]} / ${tkt}${allInfo[4]} / ${doi}${allInfo[5]} / ${cpns}${allInfo[8]} / ${fareUsed} ${allInfo[13]} / ${taxToRef} - ${taxRef.join(' ')} / ${totRef} - ${allInfo[18] === fpCahsCc ? `FP CC ${document.raValues[19].value} / FP CASH ${document.raValues[20].value}` : allInfo[18]}`
+        } console.log(allInfo)
     }
     if (document.itemsCheck.ra.value === 'refund6') {
         let allInfo = ['']
