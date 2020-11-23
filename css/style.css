@@ -27,6 +27,5 @@ h1 {
 }
 
 textarea.mandatory, select.mandatory {
-    border-radius: 5px;
     border-width: 2px;
 }
