@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
-    <title>Refund application</title>
+    <title>Refund application for involuntary</title>
 </head>
 <body>
     <form name="itemsCheck" id="itemsCheck">
@@ -11,11 +11,11 @@
         <option class="item0" disabled selected value="">Chose your option</option>
         <option class="refund1" value="refund1">Full refund</option>
         <option class="refund2" value="refund2">Full refund reissued involuntary</option>
-        <option class="refund3" value="refund3">Full refund reissued involuntary Altea, Farelogix</option>
-        <option class="refund4" value="refund4">Full refund reissued voluntary</option>
+        <option class="refund3" value="refund3" disabled>Full refund reissued involuntary Altea, Farelogix(на разі не працює)</option>
+        <option class="refund4" value="refund4" disabled>Full refund reissued voluntary(на разі не працює)</option>
         <option class="refund5" value="refund5">Partly used refund</option>
-        <option class="refund6" value="refund6">Partly used refund reissued voluntary</option>
-        <option class="refund7" value="refund7">Partly used refund reissued involuntary</option>
+        <option class="refund6" value="refund6" disabled>Partly used refund reissued voluntary(на разі не працює)</option>
+        <option class="refund7" value="refund7" disabled>Partly used refund reissued involuntary(на разі не працює)</option>
     </select>
     </form>
 
@@ -123,7 +123,7 @@
         <input type="text" class="taxess" onchange="taxes()"> <!-- 53 -->
         <input type="text" class="taxess" onchange="taxes()"> <!-- 54 -->
         <input type="text" class="taxess"> <!-- 55 -->
-        <input type="text" class="taxess"> <!-- 56 -->
+        <input id="input" type="text" class="taxess"> <!-- 56 -->
 
     </form>
 
