@@ -28,12 +28,14 @@ function partial() {
         nuc = +document.raValues[25].value,
         fare = +document.raValues[26].value
         // console.log(findTaxes)
-        // console.log(taxesFqq)
-
+    console.log(findTaxes)
+    console.log(taxesFqq)
+    let currency = taxesFqq[0]
+    console.log(currency)
 
     // фільтр всіх такс
     let allTaxes = findTaxes
-        .filter(tax => tax != '' && tax.indexOf('TX') && tax.indexOf(findTaxes[1]))
+        .filter(tax => tax != '' && tax.indexOf('TX') && tax.indexOf(currency))
         .map(tax => {
             return {
                 name: tax.slice(-2),
@@ -44,7 +46,7 @@ function partial() {
 
     // фільтр FQQ такс
     const allTaxesFqq = taxesFqq
-        .filter(tax => tax != '' && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR') && tax.indexOf(tax.indexOf(taxesFqq[0])))
+        .filter(tax => tax != '' && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR') && tax.indexOf(currency))
         .map(tax => {
             return {
                 name: tax.slice(-2),
@@ -71,8 +73,6 @@ function partial() {
     // виклик фільтру
     filtertax(allTaxesFqq)
     filtertax(allTaxes)
-    // console.log(allTaxesFqq)
-    // console.log(allTaxes)
 
     // видалення пустих значень всіх такс
     const filteredAllTaxes = allTaxes
@@ -83,13 +83,13 @@ function partial() {
                 value: Number(tax.value.toFixed(2))
             }
         })
-    // console.log('filteredAllTaxes', filteredAllTaxes)
+    console.log('filteredAllTaxes', filteredAllTaxes)
 
 
     // видалення пустих значень FQQ такс
     const filteredAllTaxesFqq = allTaxesFqq
         .filter(tax => tax.name != '')
-    // console.log('filteredAllTaxesFqq', filteredAllTaxesFqq)
+    console.log('filteredAllTaxesFqq', filteredAllTaxesFqq)
 
 
     // всі такси - FQQ такси = такси до повернення
@@ -128,7 +128,7 @@ function partial() {
             }
         })
 
-    // console.log('result', result)
+    console.log('result', result)
 
 
     // розстановка такс окремо
