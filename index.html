@@ -7,7 +7,7 @@
 </head>
 <body>
     <form name="itemsCheck" id="itemsCheck">
-    <select name="Refund application" id="ra" onchange="findOption()">
+    <select name="Refund application" id="ra" onchange="findOption()" class="mandatory">
         <option class="item0" disabled selected value="">Chose your option</option>
         <option class="refund1" value="refund1">Full refund</option>
         <option class="refund2" value="refund2">Full refund reissued involuntary</option>
@@ -27,24 +27,24 @@
         <input type="number" placeholder="к-сть квитків" min="1" max="9"> <!-- 1 -->
 
         <div id="block">
-            <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" type="text" placeholder="FLT/DATE"> <!-- 2 -->
+            <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7 mandatory" type="text" placeholder="FLT/DATE"> <!-- 2 -->
 
-            <select class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" name="" id="reason"> <!-- 3 -->
+            <select class="refund1 refund2 refund3 refund4 refund5 refund6 refund7 mandatory" name="" id="reason"> <!-- 3 -->
                 <option disabled selected value="">REASON</option>
                 <option value="CNX">CNX</option>
                 <option value="SKCHG">SKCHG</option>
                 <option value="SKCHG AND LOST MCT">SKCHG AND LOST MCT</option>
             </select>
 
-            <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" type="text" placeholder="номер квитка"> <!-- 4 -->
+            <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7 mandatory" type="text" placeholder="номер квитка"> <!-- 4 -->
 
-            <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" type="text" placeholder="дата виписки квитка"> <!-- 5 -->
+            <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7 mandatory" type="text" placeholder="дата виписки квитка"> <!-- 5 -->
 
-            <input class="refund2 refund3 refund4 refund6 refund7" type="text" placeholder="номер нового квитка"> <!-- 6 -->
+            <input class="refund2 refund3 refund4 refund6 refund7 mandatory" type="text" placeholder="номер нового квитка"> <!-- 6 -->
 
-            <input class="refund2 refund3 refund4 refund6 refund7" type="text" placeholder="дата виписки нвг квитка"> <!-- 7 -->
+            <input class="refund2 refund3 refund4 refund6 refund7 mandatory" type="text" placeholder="дата виписки нвг квитка"> <!-- 7 -->
 
-            <input class="refund5 refund6 refund7" type="text" placeholder="купони до повернення"> <!-- 8 -->
+            <input class="refund5 refund6 refund7 mandatory" type="text" placeholder="купони до повернення"> <!-- 8 -->
 
             <div class="refund2 refund3 refund7" id="reissue0"> <!-- 9 -->
                 <label for="reissue">REISSUE-0</label>
@@ -64,7 +64,7 @@
 
             <input class="refund3 refund4 refund5 refund6 refund7" type="text" placeholder="TAX TO REF" disabled> <!-- 17 -->
 
-            <select class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" name="" id="fp" onchange="findFp()"> <!-- 18 -->
+            <select class="refund1 refund2 refund3 refund4 refund5 refund6 refund7 mandatory" name="" id="fp" onchange="findFp()"> <!-- 18 -->
                 <option selected value="">FORM OF PAYMENT</option>
                 <option value="FP CASH">FP CASH</option>
                 <option value="FP CC">FP CC</option>
@@ -74,14 +74,14 @@
             <input class="" type="text" placeholder="FP CASH"> <!-- 20 -->
             <br>
 
-            <textarea class="refund5" placeholder="вставити TAX FROM TWD" rows="5"></textarea> <!-- 21 -->
-            <textarea class="refund5" placeholder="вставити TAX FROM FQQ" rows="5"></textarea> <!-- 22 -->
-            <input class="refund5" type="text" placeholder="BSR заповнити"> <!-- 23 -->
-            <input class="refund5" type="text" placeholder="ROE заповнити"> <!-- 24 -->
-            <input class="refund5" type="text" placeholder="використано NUC заповнити"> <!-- 25 -->
-            <input class="refund5" type="text" placeholder="тариф/еквівалент заповнити"> <!-- 26 -->
-            <input class="refund5" type="text" placeholder="YQ вручну"> <!-- 27 -->
-            <input class="refund5" type="text" placeholder="YR вручну"> <!-- 28 -->
+            <textarea class="refund5 mandatory" placeholder="вставити TAX FROM TWD" rows="5"></textarea> <!-- 21 -->
+            <textarea class="refund5 mandatory" placeholder="вставити TAX FROM FQQ" rows="5"></textarea> <!-- 22 -->
+            <input class="refund5 mandatory" type="text" placeholder="BSR заповнити"> <!-- 23 -->
+            <input class="refund5 mandatory" type="text" placeholder="ROE заповнити"> <!-- 24 -->
+            <input class="refund5 mandatory" type="text" placeholder="використано NUC заповнити"> <!-- 25 -->
+            <input class="refund5 mandatory" type="text" placeholder="тариф/еквівалент заповнити"> <!-- 26 -->
+            <input class="refund5" type="text" placeholder="використана YQ вручну"> <!-- 27 -->
+            <input class="refund5" type="text" placeholder="використана YR вручну"> <!-- 28 -->
 
         </div>
 
@@ -89,7 +89,7 @@
 
         <textarea class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" name="" class="itemsCheck"></textarea> <!-- 29 -->
 
-        <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7" type="button" onclick="partial()" value="ТИЦЬ"> <!-- 30 -->
+        <input class="refund1 refund2 refund3 refund4 refund5 refund6 refund7 mandatory" type="button" onclick="partial()" value="ТИЦЬ"> <!-- 30 -->
         <br>
 
 

@@ -20,3 +20,13 @@ h1 {
 .taxess, textarea {
     display: none;
 }
+
+.mandatory {
+    border-radius: 5px;
+    border-color: red;
+}
+
+textarea.mandatory, select.mandatory {
+    border-radius: 5px;
+    border-width: 2px;
+}
