@@ -21,12 +21,14 @@ const taxToRef = 'TAX TO REF'
 
 
 function partial() {
-    const findTaxes = document.raValues[21].value.split(' ')
-    const taxesFqq = document.raValues[22].value.split(' ')
+    const findTaxes = document.raValues[21].value.replace(/\n/g,' ').split(' ')
+    const taxesFqq = document.raValues[22].value.replace(/\n/g,' ').split(' ')
     const bsr = +document.raValues[23].value,
         roe = +document.raValues[24].value,
         nuc = +document.raValues[25].value,
         fare = +document.raValues[26].value
+        // console.log(findTaxes)
+        // console.log(taxesFqq)
 
 
     // фільтр всіх такс
@@ -42,7 +44,7 @@ function partial() {
 
     // фільтр FQQ такс
     const allTaxesFqq = taxesFqq
-        .filter(tax => tax != '' && tax.indexOf(findTaxes[1]) && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR'))
+        .filter(tax => tax != '' && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR') && tax.indexOf(tax.indexOf(taxesFqq[0])))
         .map(tax => {
             return {
                 name: tax.slice(-2),
@@ -69,6 +71,8 @@ function partial() {
     // виклик фільтру
     filtertax(allTaxesFqq)
     filtertax(allTaxes)
+    // console.log(allTaxesFqq)
+    // console.log(allTaxes)
 
     // видалення пустих значень всіх такс
     const filteredAllTaxes = allTaxes
