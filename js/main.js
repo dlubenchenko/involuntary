@@ -35,7 +35,7 @@ function partial() {
 
     // фільтр всіх такс
     let allTaxes = findTaxes
-        .filter(tax => tax != '' && tax.indexOf('TX') && tax.indexOf(currency))
+        .filter(tax => tax != '' && tax.indexOf('TX') && tax.indexOf(currency) && tax.indexOf('TAX') && tax.indexOf(currency) && tax.indexOf('FARE'))
         .map(tax => {
             return {
                 name: tax.slice(-2),
